@@ -1,56 +1,95 @@
-@import "../../App.scss";
-.wrapper{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    align-items: center;
-    h1{
-        font-size: 120px;
-        opacity: 0.9;
-        @include mobile{
-            font-size: 64px;
-        }
-    }
-    .mountains{
-        background: url('../../../public/mountains.png');
-        background-position: bottom;
-        background-size: cover;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        z-index: 2;
-        @include mobile{
-            background-size: contain;
-            background-repeat:no-repeat;
-        }
-    }
-    .stars{
-        background: url('../../../public/stars.png');
-        background-position: bottom;
-        background-size: cover;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        z-index: 1;
-    }
-    .planets{
-        background: url('../../../public/planets.png');
-        background-position: bottom;
-        background-size: cover;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        @include mobile{
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-    }
+.wrapper {
+  width: 100%;
+  height: 100svh;
+  min-height: 620px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
 }
-.Wedo{
-    background: linear-gradient(rgb(17, 17, 50), rgb(12, 12, 29));
+.title {
+  text-align: center;
+  z-index: 4;
+  margin-top: -70px;
+  padding: 20px;
 }
-.Wedid{
-    background: linear-gradient(180deg, #111132, #505064);
+.title p {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #c1b7d3;
+  margin-bottom: 14px;
+}
+.title h2 {
+  font-size: clamp(40px, 6vw, 140px);
+  font-weight: 550;
+  letter-spacing: -2px;
+  line-height: 1.2;
+  color: #f4edf9;
+  text-shadow: 0 3px 24px #0c0c1d99;
+}
+.mountains,
+.stars,
+.planets {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-position: center;
+  background-size: cover;
+}
+.mountains {
+  inset: -120px 0;
+  background-image: url("../../../public/mountains.png");
+  background-position: bottom;
+  z-index: 3;
+}
+.stars {
+  background-image: url("../../../public/stars.png");
+  z-index: 0;
+  opacity: 0.75;
+  inset: -80px -160px;
+}
+.planets {
+  inset: -240px 0;
+  background-image: url("../../../public/planets.png");
+  z-index: 1;
+  opacity: 0.7;
+}
+.Wedid {
+  background: linear-gradient(180deg, #17152f, #504160);
+}
+.Wedo {
+  background: linear-gradient(180deg, #17152f, #262944);
+}
+.motionToggle {
+  position: absolute;
+  bottom: 24px;
+  right: clamp(20px, 3vw, 80px);
+  z-index: 5;
+  border: 1px solid #ffffff40;
+  border-radius: 5px;
+  background: #0c0c1dcc;
+  color: #eeeef5;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+@media (max-width: 738px) {
+  .wrapper {
+    height: 75svh;
+    min-height: 420px;
+  }
+  .title {
+    margin-top: -30px;
+  }
+  .title h2 {
+    font-size: 42px;
+  }
+  .mountains {
+    background-size: auto 75%;
+    background-repeat: no-repeat;
+  }
+  .planets {
+    background-size: auto 100%;
+  }
 }
